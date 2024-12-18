@@ -5,3 +5,5 @@ const locationDialog = document.getElementById('location-dialog');
 currentLocation.addEventListener('click', () => {
     locationDialog.showModal();
 })
+
+// Fetch API from OpenWeatherMap
