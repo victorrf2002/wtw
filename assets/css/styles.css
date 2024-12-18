@@ -44,7 +44,7 @@ a:link {
 
 }
 
-/* Style footer and place it in bottom*/
+/* Style footer and place it in bottom */
 footer {
     min-height: 50px;
 }
@@ -56,4 +56,11 @@ body {
 
 main {
     flex: 1;
+}
+
+/* Style modal */
+:modal {
+    background-color: beige;
+    border: 2px solid burlywood;
+    border-radius: 5px;
 }
