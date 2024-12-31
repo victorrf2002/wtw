@@ -52,6 +52,7 @@ async function fetchData() {
     }
 }
 
+// Get the weather icon given the weather condition
 function getCondition(condition) {
     switch (condition) {
         case "Rain":
@@ -104,3 +105,38 @@ function getCondition(condition) {
     }
 }
 
+// Top text expressing the temperature
+function temperatureWeatherText(currentTemp) {
+    if (currentTemp < -40) {
+        console.log("girl, are you living in Antarctica??");
+        console.log("pls wear layers...many...many layers");
+    }
+    else if (currentTemp > -40 && currentTemp < -20) {
+        console.log("girl, ur too cute to get frostbite");
+        console.log("pls wear a warm winter jacket and a cozy sweater");
+    }
+    else if (currentTemp > -20 && currentTemp < -10) {
+        console.log("girl, its like literally time to sleigh");
+        console.log("u should wear a warm winter jacket and a cozy sweater");
+    }
+    else if (currentTemp > -10 && currentTemp < 0) {
+        console.log("girl, frosty is waiting for u");
+        console.log("u should wear a cute jacket");
+    }
+    else if (currentTemp > 0 && currentTemp < 10) {
+        console.log("girl, its kinda like chilly outside");
+        console.log("u should wear your cutest sweater");
+    }
+    else if (currentTemp > 10 && currentTemp < 20) {
+        console.log("girl, it's lowkey warm outside");
+        console.log("u can wear shorts, skirts, wtv u want i guess");
+    }
+    else if (currentTemp > 20 && currentTemp < 30) {
+        console.log("girl, it's like literally so hot rn");
+        console.log("wear ur cutest croptop, tanktop, or wtv top");
+    }
+    else if (currentTemp > 30) {
+        console.log("girl, u better be at the beach rn");
+        console.log("u should wear a bikini cause why not");
+    }
+}
