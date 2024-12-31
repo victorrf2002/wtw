@@ -15,6 +15,7 @@ var units = "metric";
 // Data
 var currentTemp = 0;
 var condition = "";
+var clothing = "";
 
 
 
@@ -45,10 +46,6 @@ async function fetchData() {
         document.getElementById("current-weather-degrees").innerHTML = currentTemp + "°C";
         getCondition(condition);
         changeWeatherText(currentTemp);
-
-
-
-
     }
     catch (error) {
         console.error(error);
@@ -128,7 +125,7 @@ function changeWeatherText(currentTemp) {
     }
     else if (currentTemp > 0 && currentTemp < 10) {
         document.getElementById("current-weather-text1").innerHTML = "girl, its kinda like chilly outside";
-        document.getElementById("current-weather-text2").innerHTML = "u should wear your cutest sweater";
+        document.getElementById("current-weather-text2").innerHTML = "u should wear your cutest hoodie";
     }
     else if (currentTemp > 10 && currentTemp < 20) {
         document.getElementById("current-weather-text1").innerHTML = "girl, it's lowkey warm outside";
@@ -141,5 +138,36 @@ function changeWeatherText(currentTemp) {
     else if (currentTemp > 30) {
         document.getElementById("current-weather-text1").innerHTML = "girl, u better be at the beach rn";
         document.getElementById("current-weather-text2").innerHTML = "u should wear a bikini cause why not";
+    }
+}
+
+// Get the clothing suggestion given the temperature outside
+function getClothingSuggestion(currentTemp) {
+    if (currentTemp < -40) {
+        clothing = "layers & layers";
+    }
+    else if (currentTemp > -40 && currentTemp < -20) {
+        clothing = "jacket & sweater";
+    }
+    else if (currentTemp > -20 && currentTemp < -10) {
+        clothing = "jacket & sweater";
+    }
+    else if (currentTemp > -10 && currentTemp < 0) {
+        clothing = "jacket";
+    }
+    else if (currentTemp > 0 && currentTemp < 10) {
+        clothing = "sweater";
+    }
+    else if (currentTemp > 10 && currentTemp < 15) {
+        clothing = "hoodie";
+    }
+    else if (currentTemp > 15 && currentTemp < 20) {
+        clothing = "t-shirt";
+    }
+    else if (currentTemp > 20 && currentTemp < 30) {
+        clothing = "tanktop";
+    }
+    else if (currentTemp > 30) {
+        clothing = "bikini";
     }
 }
