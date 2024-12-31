@@ -36,6 +36,7 @@ async function fetchData() {
         currentTemp = Math.round(data.list[0].main.temp);
 
         console.log("Current Temperature is: " + currentTemp + "°C");
+        document.getElementById("current-weather-degrees").innerHTML = currentTemp + "°C";
     }
     catch (error) {
         console.error(error);
