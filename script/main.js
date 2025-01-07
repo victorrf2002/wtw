@@ -34,6 +34,7 @@ async function fetchData() {
         }
 
         const data = await response.json();
+        console.log(data);
 
         currentTemp = Math.round(data.list[0].main.temp);
         condition = data.list[0].weather[0].main;
@@ -46,6 +47,11 @@ async function fetchData() {
         document.getElementById("current-weather-degrees").innerHTML = currentTemp + "°C";
         getCondition(condition);
         changeWeatherText(currentTemp);
+
+
+        console.log("Weather for Jan 8: " + data.list[0].main.temp);
+
+        // document.getElementById("day1-clothing").innerHTML = getClothingSuggestion();
     }
     catch (error) {
         console.error(error);
@@ -185,3 +191,11 @@ function getWeekDates() {
 }
 
 console.log(getWeekDates());
+
+document.getElementById("day1-day").innerHTML = "<strong>" + getWeekDates()[0].toDateString().substring(0, 10) + "</strong>";
+document.getElementById("day2-day").innerHTML = getWeekDates()[1].toDateString().substring(0, 10);
+document.getElementById("day3-day").innerHTML = getWeekDates()[2].toDateString().substring(0, 10);
+document.getElementById("day4-day").innerHTML = getWeekDates()[3].toDateString().substring(0, 10);
+document.getElementById("day5-day").innerHTML = getWeekDates()[4].toDateString().substring(0, 10);
+// document.getElementById("day6-day").innerHTML = getWeekDates()[5].toDateString().substring(0, 10);
+// document.getElementById("day7-day").innerHTML = getWeekDates()[6].toDateString().substring(0, 10);
