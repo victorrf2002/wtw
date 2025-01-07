@@ -171,3 +171,17 @@ function getClothingSuggestion(currentTemp) {
         clothing = "bikini";
     }
 }
+
+// Get the days of the week
+function getWeekDates() {
+    const dates = [new Date()];
+    const curr = new Date();
+    const remDaysCount = 8 - curr.getDay();
+    for (let i = 1; i <= remDaysCount; i++) {
+        const nextDate = curr.setDate(curr.getDate() + 1);
+        dates.push(new Date(nextDate));
+    }
+    return dates;
+}
+
+console.log(getWeekDates());
