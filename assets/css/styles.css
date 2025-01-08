@@ -73,9 +73,10 @@ main {
 
 /* Style modal */
 :modal {
-    background-color: beige;
-    border: 2px solid burlywood;
-    border-radius: 5px;
+    background-color: #F6F6F6;
+    border: 2px solid #8785A2;
+
+    border-radius: 25px;
 }
 
 /* Background animation */
