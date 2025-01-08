@@ -49,9 +49,27 @@ async function fetchData() {
         changeWeatherText(currentTemp);
 
 
-        console.log("Weather for Jan 8: " + data.list[0].main.temp);
+        // console.log("Weather for Jan 8: " + data.list[0].main.temp);
 
         // document.getElementById("day1-clothing").innerHTML = getClothingSuggestion();
+
+        data.list.forEach((element) => {
+            if (element.dt_txt.substring(0, 10) == day1) {
+                document.getElementById("day1-clothing").innerHTML = getClothingSuggestion(Math.round(element.main.temp));
+            }
+            if (element.dt_txt.substring(0, 10) == day2) {
+                document.getElementById("day2-clothing").innerHTML = getClothingSuggestion(Math.round(element.main.temp));
+            }
+            if (element.dt_txt.substring(0, 10) == day3) {
+                document.getElementById("day3-clothing").innerHTML = getClothingSuggestion(Math.round(element.main.temp));
+            }
+            if (element.dt_txt.substring(0, 10) == day4) {
+                document.getElementById("day4-clothing").innerHTML = getClothingSuggestion(Math.round(element.main.temp));
+            }
+            if (element.dt_txt.substring(0, 10) == day5) {
+                document.getElementById("day5-clothing").innerHTML = getClothingSuggestion(Math.round(element.main.temp));
+            }
+        });
     }
     catch (error) {
         console.error(error);
@@ -150,31 +168,31 @@ function changeWeatherText(currentTemp) {
 // Get the clothing suggestion given the temperature outside
 function getClothingSuggestion(currentTemp) {
     if (currentTemp < -40) {
-        clothing = "layers & layers";
+        return clothing = "layers & layers";
     }
     else if (currentTemp > -40 && currentTemp < -20) {
-        clothing = "jacket & sweater";
+        return clothing = "jacket & sweater";
     }
     else if (currentTemp > -20 && currentTemp < -10) {
-        clothing = "jacket & sweater";
+        return clothing = "jacket & sweater";
     }
     else if (currentTemp > -10 && currentTemp < 0) {
-        clothing = "jacket";
+        return clothing = "jacket";
     }
     else if (currentTemp > 0 && currentTemp < 10) {
-        clothing = "sweater";
+        return clothing = "sweater";
     }
     else if (currentTemp > 10 && currentTemp < 15) {
-        clothing = "hoodie";
+        return clothing = "hoodie";
     }
     else if (currentTemp > 15 && currentTemp < 20) {
-        clothing = "t-shirt";
+        return clothing = "t-shirt";
     }
     else if (currentTemp > 20 && currentTemp < 30) {
-        clothing = "tanktop";
+        return clothing = "tanktop";
     }
     else if (currentTemp > 30) {
-        clothing = "bikini";
+        return clothing = "bikini";
     }
 }
 
@@ -193,9 +211,20 @@ function getWeekDates() {
 console.log(getWeekDates());
 
 document.getElementById("day1-day").innerHTML = "<strong>" + getWeekDates()[0].toDateString().substring(0, 10) + "</strong>";
+// var day1 = `${getWeekDates()[0].getFullYear()}-${getWeekDates()[0].getMonth() + 1}-${getWeekDates()[0].getDate()}`;
+var day1 = getWeekDates()[0].toLocaleDateString('en-CA');
+// console.log(day1);
 document.getElementById("day2-day").innerHTML = getWeekDates()[1].toDateString().substring(0, 10);
+var day2 = getWeekDates()[1].toLocaleDateString('en-CA');
+
 document.getElementById("day3-day").innerHTML = getWeekDates()[2].toDateString().substring(0, 10);
+var day3 = getWeekDates()[2].toLocaleDateString('en-CA');
+
 document.getElementById("day4-day").innerHTML = getWeekDates()[3].toDateString().substring(0, 10);
+var day4 = getWeekDates()[3].toLocaleDateString('en-CA');
+
 document.getElementById("day5-day").innerHTML = getWeekDates()[4].toDateString().substring(0, 10);
+var day5 = getWeekDates()[4].toLocaleDateString('en-CA');
+
 // document.getElementById("day6-day").innerHTML = getWeekDates()[5].toDateString().substring(0, 10);
 // document.getElementById("day7-day").innerHTML = getWeekDates()[6].toDateString().substring(0, 10);
