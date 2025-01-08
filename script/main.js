@@ -210,10 +210,10 @@ function getWeekDates() {
 
 console.log(getWeekDates());
 
+// Format dates for the next 5 days
 document.getElementById("day1-day").innerHTML = "<strong>" + getWeekDates()[0].toDateString().substring(0, 10) + "</strong>";
-// var day1 = `${getWeekDates()[0].getFullYear()}-${getWeekDates()[0].getMonth() + 1}-${getWeekDates()[0].getDate()}`;
 var day1 = getWeekDates()[0].toLocaleDateString('en-CA');
-// console.log(day1);
+
 document.getElementById("day2-day").innerHTML = getWeekDates()[1].toDateString().substring(0, 10);
 var day2 = getWeekDates()[1].toLocaleDateString('en-CA');
 
@@ -225,6 +225,3 @@ var day4 = getWeekDates()[3].toLocaleDateString('en-CA');
 
 document.getElementById("day5-day").innerHTML = getWeekDates()[4].toDateString().substring(0, 10);
 var day5 = getWeekDates()[4].toLocaleDateString('en-CA');
-
-// document.getElementById("day6-day").innerHTML = getWeekDates()[5].toDateString().substring(0, 10);
-// document.getElementById("day7-day").innerHTML = getWeekDates()[6].toDateString().substring(0, 10);
