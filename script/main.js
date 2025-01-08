@@ -211,17 +211,17 @@ function getWeekDates() {
 console.log(getWeekDates());
 
 // Format dates for the next 5 days
-document.getElementById("day1-day").innerHTML = "<strong>" + getWeekDates()[0].toDateString().substring(0, 10) + "</strong>";
+document.getElementById("day1-day").innerHTML = "<strong>" + getWeekDates()[0].toDateString().substring(0, 10).toLowerCase() + "</strong>";
 var day1 = getWeekDates()[0].toLocaleDateString('en-CA');
 
-document.getElementById("day2-day").innerHTML = getWeekDates()[1].toDateString().substring(0, 10);
+document.getElementById("day2-day").innerHTML = getWeekDates()[1].toDateString().substring(0, 10).toLowerCase();
 var day2 = getWeekDates()[1].toLocaleDateString('en-CA');
 
-document.getElementById("day3-day").innerHTML = getWeekDates()[2].toDateString().substring(0, 10);
+document.getElementById("day3-day").innerHTML = getWeekDates()[2].toDateString().substring(0, 10).toLowerCase();
 var day3 = getWeekDates()[2].toLocaleDateString('en-CA');
 
-document.getElementById("day4-day").innerHTML = getWeekDates()[3].toDateString().substring(0, 10);
+document.getElementById("day4-day").innerHTML = getWeekDates()[3].toDateString().substring(0, 10).toLowerCase();
 var day4 = getWeekDates()[3].toLocaleDateString('en-CA');
 
-document.getElementById("day5-day").innerHTML = getWeekDates()[4].toDateString().substring(0, 10);
+document.getElementById("day5-day").innerHTML = getWeekDates()[4].toDateString().substring(0, 10).toLowerCase();
 var day5 = getWeekDates()[4].toLocaleDateString('en-CA');

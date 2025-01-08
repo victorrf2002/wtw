@@ -3,7 +3,10 @@
 body {
     min-height: 100vh;
     background-color: #FFE2E1;
-    font-family: 'Delius Swash Caps'
+    font-family: 'Delius Swash Caps';
+    /* color: #8785A2; */
+    background: linear-gradient(-45deg, #FFE2E1, #FFC7C7, #FB9EC6);
+    animation: gradient 1s ease infinite;
 }
 
 a,
@@ -37,6 +40,15 @@ a:link {
     margin-top: 80px;
 }
 
+#whole-forecast {
+    background-color: #F6F6F6;
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    border-radius: 25px;
+}
+
 .forecast>article {
     width: 300px;
     display: flex;
@@ -58,9 +70,25 @@ main {
     flex: 1;
 }
 
+
 /* Style modal */
 :modal {
     background-color: beige;
     border: 2px solid burlywood;
     border-radius: 5px;
+}
+
+/* Background animation */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
