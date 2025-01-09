@@ -17,7 +17,15 @@ var currentTemp = 0;
 var condition = "";
 var clothing = "";
 
-
+// Fetch API from OpenWeatherMap's geocoding API
+// async function fetchGeocodingData() {
+//     try {
+//         const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}`)
+//     }
+//     catch (error) {
+//         console.error(error);
+//     }
+// }
 
 // Fetch API from OpenWeatherMap
 
@@ -175,10 +183,10 @@ function getClothingSuggestion(currentTemp) {
         return clothing = "jacket & sweater";
     }
     else if (currentTemp > -10 && currentTemp < 0) {
-        return clothing = "jacket";
+        return clothing = "warm jacket";
     }
     else if (currentTemp > 0 && currentTemp < 10) {
-        return clothing = "sweater";
+        return clothing = "light jacket";
     }
     else if (currentTemp > 10 && currentTemp < 15) {
         return clothing = "hoodie";
