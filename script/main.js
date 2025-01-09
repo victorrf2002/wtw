@@ -18,18 +18,30 @@ var condition = "";
 var clothing = "";
 
 // Fetch API from OpenWeatherMap's geocoding API
-// async function fetchGeocodingData() {
-//     try {
-//         const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}`)
-//     }
-//     catch (error) {
-//         console.error(error);
-//     }
-// }
+
+fetchGeocodingData();
+
+async function fetchGeocodingData() {
+    try {
+
+        const response = await fetch(`/api/geocoding?city=${myLocation}&limit=5`);
+
+        const data = await response.json();
+
+        // console.log(data);
+
+        myLocation = data[0].name;
+        myLat = data[0].lat;
+        myLon = data[0].lon;
+
+        console.log("current location: " + myLocation);
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
 
 // Fetch API from OpenWeatherMap
-
-// const key = "a2b8af37466283fe470ff2d6ee8699fc";
 
 fetchData();
 
