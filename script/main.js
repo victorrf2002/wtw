@@ -29,13 +29,13 @@ var clothing = "";
 
 // Fetch API from OpenWeatherMap
 
-const key = "a2b8af37466283fe470ff2d6ee8699fc";
+// const key = "a2b8af37466283fe470ff2d6ee8699fc";
 
 fetchData();
 
 async function fetchData() {
     try {
-        const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${myLat}&lon=${myLon}&appid=${key}&units=${units}`);
+        const response = await fetch(`/api/weather?lat=${myLat}&lon=${myLon}&units=${units}`);
 
         if (!response.ok) {
             throw new Error("Could not fetch resource");
