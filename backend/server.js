@@ -18,6 +18,26 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../index.html"));
 });
 
+//  Fetch geocoding data endpoint
+app.get('/api/geocoding', async (req, res) => {
+    const { city } = req.query;
+
+    if (!city) {
+        return (res.status(400).json({ error: 'Missing parameters' }));
+    }
+
+    try {
+        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`);
+        if (!response.ok) {
+            throw new Error('Failed to fetch geocoding data');
+        }
+        const data = await response.json();
+        res.json(data);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 //  Fetch weather data endpoint
 app.get('/api/weather', async (req, res) => {
     const { lat, lon, units } = req.query;
