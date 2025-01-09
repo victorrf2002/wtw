@@ -44,14 +44,12 @@ async function fetchData() {
         console.log("Current Weather condition is: " + condition);
         console.log("Current Temperature is: " + currentTemp + "°C");
 
-        document.getElementById("current-weather-degrees").innerHTML = currentTemp + "°C";
+        document.getElementById("current-weather-degrees").innerHTML = currentTemp + "°c";
         getCondition(condition);
         changeWeatherText(currentTemp);
 
 
-        // console.log("Weather for Jan 8: " + data.list[0].main.temp);
-
-        // document.getElementById("day1-clothing").innerHTML = getClothingSuggestion();
+        document.getElementById("day1-clothing").innerHTML = getClothingSuggestion(currentTemp);
 
         data.list.forEach((element) => {
             if (element.dt_txt.substring(0, 10) == day1) {

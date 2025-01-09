@@ -93,3 +93,35 @@ main {
         background-position: 0% 50%;
     }
 }
+
+/*  Media Query for iPhone compatibility */
+@media only screen and (max-width: 850px) {
+
+    #current-weather-text1 {
+        margin-top: 50px;
+    }
+
+    .main-info>h2 {
+        margin: 10px;
+        font-size: 20px;
+        text-align: center;
+    }
+
+    #whole-forecast {
+        margin-top: 30px;
+        width: 150px;
+    }
+
+    .current-weather-images {
+        justify-content: center;
+    }
+
+    .forecast {
+        margin-top: 40px;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+    }
+}
