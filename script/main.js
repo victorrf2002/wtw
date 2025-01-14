@@ -172,11 +172,11 @@ function changeWeatherText(currentTemp) {
     }
     else if (currentTemp > -10 && currentTemp <= 0) {
         document.getElementById("current-weather-text1").innerHTML = "girl, frosty is waiting for u";
-        document.getElementById("current-weather-text2").innerHTML = "u should wear a cute jacket";
+        document.getElementById("current-weather-text2").innerHTML = "u should wear a cute warm jacket";
     }
     else if (currentTemp > 0 && currentTemp <= 10) {
         document.getElementById("current-weather-text1").innerHTML = "girl, its kinda like chilly outside";
-        document.getElementById("current-weather-text2").innerHTML = "u should wear your cutest hoodie";
+        document.getElementById("current-weather-text2").innerHTML = "u should wear your cutest sweater";
     }
     else if (currentTemp > 10 && currentTemp <= 20) {
         document.getElementById("current-weather-text1").innerHTML = "girl, it's lowkey warm outside";
