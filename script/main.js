@@ -17,29 +17,38 @@ var currentTemp = 0;
 var condition = "";
 var clothing = "";
 
-// Fetch API from OpenWeatherMap's geocoding API
+// Fetch Goecoding API from OpenWeatherMap to identify location
 
-fetchGeocodingData();
+const locationForm = document.getElementById('location-form');
 
-async function fetchGeocodingData() {
+locationForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const city = document.getElementById("location-input").value;
+
     try {
-
-        const response = await fetch(`/api/geocoding?city=${myLocation}&limit=5`);
+        const response = await fetch(`/api/geocoding?city=${encodeURIComponent(city)}`);
+        if (!response.ok) {
+            throw new Error("Failed to fetch geocoding data.");
+        }
 
         const data = await response.json();
+        if (data.length > 0) {
+            myLat = data[0].lat;
+            myLon = data[0].lon;
+            myLocation = data[0].name;
+            document.getElementById("location").innerHTML = myLocation.toLowerCase();
 
-        // console.log(data);
+            console.log(`Updated location: ${myLocation}, Lat: ${myLat}, Lon: ${myLon}`);
 
-        myLocation = data[0].name;
-        myLat = data[0].lat;
-        myLon = data[0].lon;
-
-        console.log("current location: " + myLocation);
+            fetchData();
+        } else {
+            console.error("No location found");
+        }
+    } catch (error) {
+        console.error("Error fetching geocoding data:", error);
     }
-    catch (error) {
-        console.error(error);
-    }
-}
+});
 
 // Fetch API from OpenWeatherMap
 
@@ -149,31 +158,31 @@ function getCondition(condition) {
 
 // Change text given the temperature
 function changeWeatherText(currentTemp) {
-    if (currentTemp < -40) {
+    if (currentTemp <= -40) {
         document.getElementById("current-weather-text1").innerHTML = "girl, are you living in Antarctica??";
         document.getElementById("current-weather-text2").innerHTML = "pls wear layers...many...many layers";
     }
-    else if (currentTemp > -40 && currentTemp < -20) {
+    else if (currentTemp > -40 && currentTemp <= -20) {
         document.getElementById("current-weather-text1").innerHTML = "girl, ur too cute to get frostbite";
         document.getElementById("current-weather-text2").innerHTML = "pls wear a warm winter jacket and a cozy sweater";
     }
-    else if (currentTemp > -20 && currentTemp < -10) {
+    else if (currentTemp > -20 && currentTemp <= -10) {
         document.getElementById("current-weather-text1").innerHTML = "girl, its like literally time to sleigh";
         document.getElementById("current-weather-text2").innerHTML = "u should wear a warm winter jacket and a cozy sweater";
     }
-    else if (currentTemp > -10 && currentTemp < 0) {
+    else if (currentTemp > -10 && currentTemp <= 0) {
         document.getElementById("current-weather-text1").innerHTML = "girl, frosty is waiting for u";
         document.getElementById("current-weather-text2").innerHTML = "u should wear a cute jacket";
     }
-    else if (currentTemp > 0 && currentTemp < 10) {
+    else if (currentTemp > 0 && currentTemp <= 10) {
         document.getElementById("current-weather-text1").innerHTML = "girl, its kinda like chilly outside";
         document.getElementById("current-weather-text2").innerHTML = "u should wear your cutest hoodie";
     }
-    else if (currentTemp > 10 && currentTemp < 20) {
+    else if (currentTemp > 10 && currentTemp <= 20) {
         document.getElementById("current-weather-text1").innerHTML = "girl, it's lowkey warm outside";
         document.getElementById("current-weather-text2").innerHTML = "u can wear shorts, skirts, wtv u want i guess";
     }
-    else if (currentTemp > 20 && currentTemp < 30) {
+    else if (currentTemp > 20 && currentTemp <= 30) {
         document.getElementById("current-weather-text1").innerHTML = "girl, it's like literally so hot rn";
         document.getElementById("current-weather-text2").innerHTML = "wear ur cutest croptop, tanktop, or wtv top";
     }
@@ -185,28 +194,28 @@ function changeWeatherText(currentTemp) {
 
 // Get the clothing suggestion given the temperature outside
 function getClothingSuggestion(currentTemp) {
-    if (currentTemp < -40) {
+    if (currentTemp <= -40) {
         return clothing = "layers & layers";
     }
-    else if (currentTemp > -40 && currentTemp < -20) {
+    else if (currentTemp > -40 && currentTemp <= -20) {
         return clothing = "jacket & sweater";
     }
-    else if (currentTemp > -20 && currentTemp < -10) {
+    else if (currentTemp > -20 && currentTemp <= -10) {
         return clothing = "jacket & sweater";
     }
-    else if (currentTemp > -10 && currentTemp < 0) {
+    else if (currentTemp > -10 && currentTemp <= 0) {
         return clothing = "warm jacket";
     }
-    else if (currentTemp > 0 && currentTemp < 10) {
+    else if (currentTemp > 0 && currentTemp <= 10) {
         return clothing = "light jacket";
     }
-    else if (currentTemp > 10 && currentTemp < 15) {
+    else if (currentTemp > 10 && currentTemp <= 15) {
         return clothing = "hoodie";
     }
-    else if (currentTemp > 15 && currentTemp < 20) {
+    else if (currentTemp > 15 && currentTemp <= 20) {
         return clothing = "t-shirt";
     }
-    else if (currentTemp > 20 && currentTemp < 30) {
+    else if (currentTemp > 20 && currentTemp <= 30) {
         return clothing = "tanktop";
     }
     else if (currentTemp > 30) {

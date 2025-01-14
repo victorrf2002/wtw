@@ -8,7 +8,6 @@ const port = 3000;
 
 //  Middleware
 app.use(express.json());
-
 app.use(express.static(path.join(__dirname, "../")));
 
 //  API Key
@@ -27,10 +26,13 @@ app.get('/api/geocoding', async (req, res) => {
     }
 
     try {
-        const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${key}`);
+        const apiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${encodeURIComponent(city)}&limit=1&appid=${key}`;
+        const response = await fetch(apiUrl);
+
         if (!response.ok) {
             throw new Error('Failed to fetch geocoding data');
         }
+
         const data = await response.json();
         res.json(data);
     } catch (error) {
